@@ -6,7 +6,7 @@ using namespace commands;
 string commands::WPA2(string wordlist, string hc22000)
 {
 	stringstream st;
-	st << "hashcat -m 22000 " << fileDirectory << hc22000 << " " << fileDirectory << wordlist << " -o " << fileDirectory.string() << SOLUTION_FILE << " -w 3 " << endl;
+	st << "hashcat -m 22000 " << fileDirectory.string() << hc22000 << " " << fileDirectory.string() << wordlist << " -o " << fileDirectory.string() << SOLUTION_FILE << endl;
 	return st.str();
 }
 

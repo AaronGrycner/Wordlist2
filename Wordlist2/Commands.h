@@ -6,7 +6,7 @@
 
 using namespace std;
 
-namespace commands 
+namespace commands
 {
 	static filesystem::path directory{ filesystem::current_path() };
 	static filesystem::path fileDirectory{ filesystem::current_path().string() + "\\files"};
@@ -14,7 +14,6 @@ namespace commands
 	string WPA2(string wordlist, string hc22000);
 	string Del(string file);
 	string cd(string directory);
-
 };
 
 #endif

@@ -7,12 +7,13 @@
 #include <Windows.h>
 #include "Session.h"
 #include <filesystem>
+#include "Commands.h"
+
 
 using namespace std;
 
-const int CHUNK_SIZE{ 10000000 };
-const string FILES_DIRECTORY{"C:\\Users\\mrzee\\Desktop\\Wordlist2\\Wordlist2\\files"}, SESSION_FILE{"\\session.txt"}, SOLUTION_FILE{"\\solution.txt"};
-const LPCWSTR LFILES_DIRECTORY{ L"\\files" };
+const int CHUNK_SIZE{ 100000 };
+const string SESSION_FILE{"\\session.txt"}, SOLUTION_FILE{"\\solution.txt"};
 
 class Wordlist
 {
@@ -42,7 +43,6 @@ public:
 	void GetIterLocation(int& x, int& y, int& z, int& sy); // returns the current location of the iterators
 	bool WriteNextFile();
 	double GetTotalWords() { return totalWords; }
-
 };
 
 

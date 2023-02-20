@@ -4,7 +4,7 @@ void PasswordCrack::UpdateSessionFile()
 {
 	list->GetIterLocation(session.x, session.y, session.z, session.sy); // get iterator data from wordlist and set into variables
 
-	out.open(FILES_DIRECTORY + SESSION_FILE, std::ofstream::out | std::ofstream::trunc);
+	out.open(commands::fileDirectory.string() + SESSION_FILE, std::ofstream::out | std::ofstream::trunc);
 
 	out << session.Print();
 
@@ -13,7 +13,7 @@ void PasswordCrack::UpdateSessionFile()
 
 string PasswordCrack::GetSolution()
 {
-	ifstream in{ FILES_DIRECTORY + SOLUTION_FILE };
+	ifstream in{ commands::fileDirectory.string() + SOLUTION_FILE };
 	string temp;
 
 	getline(in, temp);
@@ -24,7 +24,7 @@ string PasswordCrack::GetSolution()
 PasswordCrack::PasswordCrack() //default constructor for resuming session, automatically checks for session file
 {
 	if (CheckForSession()) {
-		session.ReadSessionFile(FILES_DIRECTORY + SESSION_FILE);
+		session.ReadSessionFile(commands::fileDirectory.string() + SESSION_FILE);
 		list = new Wordlist(session);
 		Crack();
 	}
@@ -49,7 +49,7 @@ PasswordCrack::PasswordCrack(string file, int let, int sym)
 bool PasswordCrack::Crack()
 {
 	// create folder for word files
-	CreateDirectory(LFILES_DIRECTORY, NULL);
+	CreateDirectory(commands::fileDirectory.wstring().data(), NULL);
 
 	Hashcat hashcat;
 
@@ -70,7 +70,7 @@ bool PasswordCrack::Crack()
 
 bool PasswordCrack::CheckForSession()
 {
-	in.open(FILES_DIRECTORY + SESSION_FILE);
+	in.open(commands::fileDirectory.string() + SESSION_FILE);
 
 	if (!in.good() || in.peek() == EOF) {
 		in.close();

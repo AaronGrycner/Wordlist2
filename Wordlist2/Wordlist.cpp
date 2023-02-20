@@ -97,7 +97,7 @@ bool Wordlist::MoveIterators()
 
 bool Wordlist::WriteNextFile()
 {
-	ofstream out{ FILES_DIRECTORY + "\\" + to_string(session->fileCount) + ".txt"};
+	ofstream out{ commands::fileDirectory.string() + "\\" + to_string(session->fileCount) + ".txt"};
 
 	MakeOutVec();
 

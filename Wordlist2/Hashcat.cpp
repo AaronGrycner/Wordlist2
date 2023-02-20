@@ -57,9 +57,9 @@ void Hashcat::MakeBatchFile(string batchName, string cmds)
 
 bool Hashcat::SystemCall(string batchname)
 {
-	string directory = commands::directory.string() + "\\files";
+	string directory = commands::fileDirectory.string();
 
-	system((directory + "\\" + batchname).c_str());
+	system((directory + batchname).c_str());
 
 	if (filesystem::is_empty(commands::fileDirectory.string() + SOLUTION_FILE))
 		return false;
@@ -82,12 +82,12 @@ bool Hashcat::operator()(const Session& s)
 { 
 	string wordlist = "\\" + to_string(s.fileCount) + ".txt";
 	string batch = "\\" + to_string(s.fileCount) + ".bat";
-	string cms = 
-		commands::cd(commands::hashcatDirec.string()) + 
-		commands::WPA2(wordlist, "\\a.hc22000") +
-		commands::Del("C:\\Users\\mrzee\\Desktop\\Wordlist2\\Wordlist2\\files" + wordlist) +
-		commands::Del("C:\\Users\\mrzee\\Desktop\\Wordlist2\\Wordlist2\\files" + batch);
+	string cms =
+		commands::cd(commands::hashcatDirec.string()) +
+		commands::WPA2(wordlist, "\\a.hc22000");
 
 	MakeBatchFile(batch, cms);
-	return SystemCall(batch);
+	SystemCall(batch);
+
+	return true;
 }

@@ -2,7 +2,6 @@
 #define HASHCAT_H
 
 #include "Wordlist.h"
-#include "Commands.h"
 #include <windows.h>
 
 class Hashcat

@@ -1,8 +1,7 @@
-#include "Header.h"
 #include "PasswordCrack.h"
 
 int main() {
-	bool resume{ true };
+	bool resume{ false };
 	int letters{ 12 }, symbols{ 1 };
 	string filename{ "words.txt" };
 	PasswordCrack* crack;

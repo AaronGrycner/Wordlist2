@@ -29,6 +29,8 @@ void Wordlist::InitVector()
 	ifstream dict{ session->dict };
 	string temp;
 
+	cout << "\nwriting vector...";
+
 	wordVec.resize(session->letters - 1);
 	
 	while (dict.good()) {
@@ -95,14 +97,17 @@ bool Wordlist::MoveIterators()
 
 bool Wordlist::WriteNextFile()
 {
-	ofstream out{ DIRECTORY + to_string(session->fileCount) + ".txt"};
+	ofstream out{ FILES_DIRECTORY + "\\" + to_string(session->fileCount) + ".txt"};
 
 	MakeOutVec();
+
+	cout << endl << session->fileCount << "writing file...";
 
 	for (string word : outVec) {
 		out << word << endl;
 	}
 
+	++session->fileCount;
 	out.close();
 	return true;
 }

@@ -6,12 +6,13 @@
 #include <iostream>
 #include <Windows.h>
 #include "Session.h"
+#include <filesystem>
 
 using namespace std;
 
-const int CHUNK_SIZE{ 10000 };
-const string DIRECTORY{ "files\\" }, SESSION_FILE{ "session.txt" };
-const LPCWSTR LDIRECTORY{ L"files" };
+const int CHUNK_SIZE{ 10000000 };
+const string FILES_DIRECTORY{"C:\\Users\\mrzee\\Desktop\\Wordlist2\\Wordlist2\\files"}, SESSION_FILE{"\\session.txt"}, SOLUTION_FILE{"\\solution.txt"};
+const LPCWSTR LFILES_DIRECTORY{ L"\\files" };
 
 class Wordlist
 {

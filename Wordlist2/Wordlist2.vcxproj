@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,14 +128,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="Hashcat.h" />
+    <ClInclude Include="Commands.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="PasswordCrack.h" />
     <ClInclude Include="Wordlist.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Hashcat.cpp" />
     <ClCompile Include="PasswordCrack.cpp" />
     <ClCompile Include="Driver.cpp" />
+    <ClCompile Include="Commands.cpp" />
     <ClCompile Include="Wordlist.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,7 +1,7 @@
 #ifndef PASSWORDCRACK_H
 #define PASSWORDCRACK_H
 
-#include "Wordlist.h"
+#include "Hashcat.h"
 #include <iomanip>
 
 using namespace std;
@@ -9,6 +9,7 @@ using namespace std;
 class PasswordCrack
 {
 private:
+	bool solutionFound;
 	Session session;
 	string filename;
 	Wordlist* list;
@@ -17,6 +18,7 @@ private:
 	bool sessionFound;
 	bool CheckForSession();
 	void UpdateSessionFile();
+	string GetSolution();
 
 public:
 	PasswordCrack();

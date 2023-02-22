@@ -8,6 +8,8 @@
 #include "Session.h"
 #include <filesystem>
 #include "Commands.h"
+#include <algorithm>
+#include <ctype.h>
 
 
 using namespace std;

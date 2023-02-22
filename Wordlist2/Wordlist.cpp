@@ -28,6 +28,7 @@ void Wordlist::InitVector()
 {
 	ifstream dict{ session->dict };
 	string temp;
+	vector<string> tempVec;
 
 	cout << "\nwriting vector...";
 
@@ -35,11 +36,19 @@ void Wordlist::InitVector()
 	
 	while (dict.good()) {
 		getline(dict, temp);
-		if (temp.size() < session->letters)
-			wordVec[temp.size() - 1].push_back(temp);
+		if (temp.size() < session->letters) {
+			for (char& ch : temp)
+				ch = tolower(ch);
+			tempVec.push_back(temp);
+		}
 		dict.peek();
 	}
 
+	sort(tempVec.begin(), tempVec.end());
+
+	for (string st : tempVec) 
+			wordVec[st.size() - 1].push_back(st);
+	
 	dict.close();
 }
 
